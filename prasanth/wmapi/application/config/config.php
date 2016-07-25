@@ -18,6 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost/wishing_ui1/prasanth/wmapi/';
+//$config['base_url'] = 'http://8da2efe2.ngrok.io/wishing_ui1/prasanth/wmapi/';
 
 /*
 |--------------------------------------------------------------------------

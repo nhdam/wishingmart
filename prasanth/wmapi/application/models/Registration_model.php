@@ -40,10 +40,40 @@ class registration_model extends CI_Model
             "uname" => $email,
             "pwd"   => $pwd           
         );
-        $reg = $this->user->insert("registration", $reg_data);
-        $user = $this->user->insert("user",$user_data);
-        return $reg.$user;
+
+        $reg     = $this->user->insert("registration", $reg_data);
+        $user    = $this->user->insert("user",$user_data);
+
+        $last_update = date("Y-m-d G:i:s",time());
+        $data_prof=array(
+            'pid'        =>$rid,
+            'enotice'    =>"0",
+            'prof_img'   =>"profile.png",
+            'contact'    =>"0",
+            'hcontact'   =>"0",
+            'last_update'=>$last_update,
+        );
+        $profile = $this->user->insert("profile",$data_prof);
+        $data_pay=array(
+            'payid'      =>$rid,
+            'card_no'    =>"0",
+            'issued_bank'=>"0",
+            'country'    =>"0",
+            'card_type'  =>"0",
+        );
+        $payment = $this->user->insert("payment",$data_pay);
+        
+        $user_online=array(
+            'uid'    =>$rid,
+            'online' =>"0",
+        );
+        $CI = &get_instance();
+        $this->chat = $CI->load->database('chat', TRUE);
+        $data_online = $this->chat->insert("online",$user_online);
+
+        return $reg.$user.$profile.$payment.$data_online;
     }
+
 
     function get_country(){
         // Loading second db and running query.

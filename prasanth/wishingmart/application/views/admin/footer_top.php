@@ -1,5 +1,28 @@
+<!-- Online chatting pluggin Start-->
+<div class="chatbox" id="tab1" style="bottom:0px; display:none;">
+
+    <div class="chatboxhead"><?php echo $this->session->userdata('from_id'); ?>
+        <div class="chatboxoptions">
+            <a href="javascript:void(0)" onclick="toggler('myContent');">- </a>
+<!--
+        <a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.style.display = 'none'">x</a>
+-->
+        <a href="#" onclick="funclose()">X</a>
+        </div>
+    </div>
+    <div style="clear:both"></div>
+    <div id="myContent">
+        <div id="divcontent" class="chatboxcontent"></div>
+        <div class="chatboxinput">
+            <textarea type="text" id="txtmsg" class="chatboxtextarea" onkeypress="funsend(event)" ></textarea>
+        </div>
+    </div>
+</div>
+<!-- Online chatting pluggin end-->
+
 <!-- footer -->
 <div class="footer navbar-fixed-bottom" role="navigation">
+<!-- <div class="colorbox rainbow"></div> -->
   <div class="pull-left">
     <div class="links">
       <a href="<?php echo base_url('landing/termscondition'); ?>">Terms &amp; Conditions</a>   
@@ -10,7 +33,16 @@
       <a href="<?php echo base_url('landing/toolsapps'); ?>">Tools &amp; Apps</a> 
       &nbsp;&nbsp;     
     </div>
-    <div class="links"> <a href="<?php echo base_url('landing'); ?>">WishingMart &copy; 2015</a></div>
+    <div class="links">
+      <a href="<?php echo base_url('landing'); ?>">
+        WishingMart &copy; <?php echo date("Y",time()); ?>
+      </a>
+    </div>
+<!--
+    <div class="links">
+      <p>Page rendered in <strong>{elapsed_time}</strong> seconds</p>
+    </div>
+-->
   </div>
 <div class="social pull-right">
   
